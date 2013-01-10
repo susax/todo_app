@@ -1,0 +1,32 @@
+  <h3>
+タスク編集
+  </h3>
+    <div class="form">
+    <form method="post" action="update">
+    <label for="textinput3">
+  タスク名
+    </label>
+    <input id="task_name" name="task_name" type="" value="<%= @todo.task_name %>">
+    <label for="textinput3">
+  タスク開始日
+    </label>
+    <input id="registration_date" name="registration_date" type="date" value="<%= @todo.registration_date %>">
+    <label for="textinput6">
+  期限
+    </label>
+    <input id="term" name="term" type="date" value="<%= @todo.term %>">
+    <label for="selectinput3">
+  重要度
+    </label>
+    <select id="importance" name="importance" value="<%= @todo.importance %>">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <label for="textinput">
+  メモ
+    </label>
+    <input id="comment" name="comment" type="text" value="<%= @todo.comment %>">
+    <input type="submit" value="登録" class="btn">
+    </form>
+    </div> 

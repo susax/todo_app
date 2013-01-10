@@ -1,0 +1,117 @@
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">
+            Todoアプリ
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        <p>
+          タスクを登録したりステータスを管理できたりします。
+        </p>
+      </div>
+      <div class="control-group">
+      </div>
+      <hr>
+      <h3>
+        未完了タスク一覧
+      </h3>
+      <div>
+        <% if @todo.present? %>
+          <table class="table table-hover">
+          <tr>
+            <td>タスク名</td>
+            <td>重要度</td>
+            <td>期限日</td>
+            <td>コメント</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% @todo.each do |one| %>
+          <tr id="month_<%= one.id %>">
+            <td style="color:#ff0000"><%= one.task_name %></td>
+            <td><%= one.importance %></td>
+            <td><%= one.term %></td>
+            <td><%= one.comment %></td>
+            <td><a href="/<%= one.todo_id %>/edit">編集</a></td>
+            <td><a href="/<%= one.todo_id %>/undone">完了</a></td>
+            <td><a href="/<%= one.todo_id %>/destroy">削除</a></td>
+          </tr>
+        <% end %>
+        </table>
+        <% else %>
+        登録されたタスクはありません。
+        <% end %>
+       <h3>
+        完了タスク一覧
+      </h3>
+      <div>
+        <% if @todo_done.present? %>
+          <table class="table table-hover">
+          <tr>
+            <td>タスク名</td>
+            <td>重要度</td>
+            <td>期限日</td>
+            <td>コメント</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% @todo_done.each do |done| %>
+          <tr id="month_<%= done.id %>">
+            <td style="color:#ff0000"><%= done.task_name %></td>
+            <td><%= done.importance %></td>
+            <td><%= done.term %></td>
+            <td><%= done.comment %></td>
+            <td><a href="/<%= done.todo_id %>/edit">編集</a></td>
+            <td><a href="/<%= done.todo_id %>/done">完了</a></td>
+            <td><a href="/<%= done.todo_id %>/destroy">削除</a></td>
+          </td>
+          </tr>
+        <% end %>
+        </table>
+        <% else %>
+        完了したタスクはありません。
+        <% end %>
+      </div>
+      <h3>
+        タスク登録
+      </h3>
+        <div class="form">
+        <form method="post" action="/create">
+        <label for="textinput3">
+          タスク名
+        </label>
+        <input id="task_name" name="task_name" type="">
+        <label for="textinput3">
+          タスク開始日
+        </label>
+        <input id="registration_date" name="registration_date" type="date">
+        <label for="textinput6">
+          期限
+        </label>
+        <input id="term" name="term" type="date">
+        <label for="selectinput3">
+          重要度
+        </label>
+        <select id="importance" name="importance">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <label for="textinput">
+          メモ
+        </label>
+        <input id="comment" name="comment" type="text">
+        <input type="submit" value="登録" class="btn">
+        </form>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="assets/js/bootstrap.js">
+    </script>
